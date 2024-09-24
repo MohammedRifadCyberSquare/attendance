@@ -1,0 +1,49 @@
+{% extends 'teacher/teacher_master.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex justify-content-center " style="min-height: 100vh;">
+    <div class="col-md-6 mt-5">
+        <div class="card-body">
+            <h3 class="text-center py-3" style="font-weight: bolder;">Register Student</h3>
+             
+            {% if message %}
+            <div class="alert alert-primary mt-3" id="error-msg" role="alert">
+             {{ message }}
+           </div>
+           {% endif %}
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-1">
+                    <label for="admission_no" class="form-label text-dark py-2">Admission No</label>
+                    <input type="number"class="form-control" name="admission_no" id="">
+                </div>
+                <div class="mb-1">
+                    <label for="student_name" class="form-label text-dark py-2">Student Name</label>
+                    <input type="text" class="form-control" name="student_name" id="">
+                </div>
+                
+               
+                 
+                <div class="mb-1">
+                    <label for="pic" class="form-label text-dark py-2">Student Pic</label>
+                    <input type="file" class="form-control" name="pic" id="">
+                </div>
+                
+                <button type="submit" class="btn btn-primary d-flex justify-content-center w-100">Add Now</button>
+
+                </div>
+            </form>
+
+            
+        </div>
+    </div>
+    <script>
+        setTimeout(function() {
+           var errorMsg = document.getElementById('error-msg');
+           if (errorMsg) {
+              errorMsg.style.display = 'none';
+           }
+        }, 2000); // 5000 milliseconds = 5 seconds
+     </script>  
+{% endblock %}

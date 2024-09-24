@@ -1,0 +1,29 @@
+{% extends 'teacher/teacher_master.html' %}
+{% block content %}
+<div
+  class="container "
+>
+<h2 class="text-center py-4">Student List</h2>
+    <div class="row">
+       
+        {% for student in students %}
+        <div class="col-md-4  ">
+           
+            <div class="card" style="width: 18rem;">
+                <img src="{{ student.pic.url}}"  class="card-img-top" style="max-height: 200px;min-height: 200px; max-width: 250px;min-width: 250px; border-radius: 10px;" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title h2">Name: {{student.student_name | title }}</h5>
+                  <p class="card-text  font-weight-bold">Class: {{student.student_class}}{{student.division | upper}}</p>
+
+                  <p class="card-text  font-weight-bold">Admission No: {{student.admission_no}}</p>
+                  
+
+                  <a href="#" class="btn btn-danger">Remove</a>
+                </div>
+              </div>
+              
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
